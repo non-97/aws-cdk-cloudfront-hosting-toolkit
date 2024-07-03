@@ -1,8 +1,5 @@
 version: 0.2
 
-env:
-  variables:
-    NEXT_EXPORT: true
 phases:
   install:
     runtime-versions:
@@ -11,7 +8,7 @@ phases:
     commands:
       - npm install -g pnpm
       - pnpm i
-      - pnpm export
+      - pnpm build
       - cd out
       - echo aws s3 cp ./ s3://$DEST_BUCKET_NAME/$CODEBUILD_RESOLVED_SOURCE_VERSION/ --recursive #don't change this line
       - aws s3 cp ./ s3://$DEST_BUCKET_NAME/$CODEBUILD_RESOLVED_SOURCE_VERSION/ --recursive #don't change this line
